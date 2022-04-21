@@ -145,6 +145,8 @@ class Mylogin extends HookWidget {
                               'contact_key', user.phoneNo?.toString() ?? '');
                           await Preferences.setString(
                               'school_key', user.school ?? '');
+                          await Preferences.setString(
+                              'image_url_key', user.imageUrl ?? '');
                           await Preferences.setString('grade_key', user.grade ?? '');
                           context.pushReplacement(const Home());
                         } else {

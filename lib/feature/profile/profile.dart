@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../core/preferences.dart';
 import '../drawer/drawer.dart';
 import '../drawer/name_provider.dart';
 
@@ -23,10 +24,19 @@ class Profile extends ConsumerWidget {
               Container(
                 decoration: BoxDecoration(
                     color: Colors.black, borderRadius: BorderRadius.circular(50.0)),
-                child: Image.network(
-                  'photo',
-                  width: 200.0,
-                  height: 200.0,
+                child: FutureBuilder<String>(
+                  future: Preferences.getString('image_url_key'),
+                  builder: (_, snapshot) {
+                    if (!snapshot.hasData) return const CircularProgressIndicator();
+                    if (snapshot.data == null) {
+                      return const CircularProgressIndicator();
+                    }
+                    return Image.network(
+                      snapshot.data!,
+                      width: 200.0,
+                      height: 200.0,
+                    );
+                  },
                 ),
               ),
               Stack(
