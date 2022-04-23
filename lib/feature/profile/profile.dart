@@ -24,7 +24,7 @@ class Profile extends ConsumerWidget {
               Container(
                 decoration: BoxDecoration(
                     color: Colors.black, borderRadius: BorderRadius.circular(50.0)),
-                child: FutureBuilder<String>(
+                child: FutureBuilder(
                   future: Preferences.getString('image_url_key'),
                   builder: (_, snapshot) {
                     if (!snapshot.hasData) return const CircularProgressIndicator();
@@ -32,7 +32,7 @@ class Profile extends ConsumerWidget {
                       return const CircularProgressIndicator();
                     }
                     return Image.network(
-                      snapshot.data!,
+                      snapshot.data?.toString() ?? '',
                       width: 200.0,
                       height: 200.0,
                     );
