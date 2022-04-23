@@ -28,11 +28,14 @@ class _CalendarState extends State<Calendar> {
       final json = await rootBundle.loadString('json/events.json');
       final events = jsonDecode(json);
       for (final event in events) {
-        final dateTime = DateTime.parse(event['date']);
-        final date = "${dateTime.day}-${dateTime.month}-${dateTime.year}";
-        selectedEvents[DateUtils.dateOnly(DateTime.parse(event['date']))]?.add(
-          Event(title: event['event']),
-        );
+        final date = normalizeDate(DateTime.parse(event['date']));
+        if (selectedEvents[date] != null) {
+          selectedEvents[date]?.add(
+            Event(title: event['event']),
+          );
+        } else {
+          selectedEvents[date] = [Event(title: event['event'])];
+        }
       }
     });
     super.initState();
