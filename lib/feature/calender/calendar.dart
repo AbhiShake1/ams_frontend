@@ -24,12 +24,6 @@ class _CalendarState extends ConsumerState<Calendar> {
 
   final TextEditingController _eventController = TextEditingController();
 
-  @override
-  void initState() {
-    selectedEvents = {};
-    super.initState();
-  }
-
   List<Event> _getEventsfromDay(DateTime date) {
     return selectedEvents[date] ?? [];
   }
@@ -42,6 +36,7 @@ class _CalendarState extends ConsumerState<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    selectedEvents = {};
     ref.watch(eventsRef).whenData((json) {
       final events = jsonDecode(json);
       for (final event in events) {
