@@ -46,7 +46,7 @@ class _MySignupState extends State<MySignup> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(300.0, 125.0, 0.0, 0.0),
+                    padding: const EdgeInsets.fromLTRB(300.0, 125.0, 0.0, 0.0),
                     child: const Text(
                       '.',
                       style: TextStyle(
@@ -92,7 +92,7 @@ class _MySignupState extends State<MySignup> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
                       TextFormField(
                         textCapitalization: TextCapitalization.characters,
                         keyboardType: TextInputType.emailAddress,

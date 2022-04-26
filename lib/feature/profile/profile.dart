@@ -27,12 +27,11 @@ class Profile extends ConsumerWidget {
                 child: FutureBuilder(
                   future: Preferences.getString('image_url_key'),
                   builder: (_, snapshot) {
-                    if (!snapshot.hasData) return const CircularProgressIndicator();
-                    if (snapshot.data == null) {
+                    if (!snapshot.hasData || snapshot.data == null) {
                       return const CircularProgressIndicator();
                     }
                     return Image.network(
-                      snapshot.data?.toString() ?? '',
+                      snapshot.data.toString(),
                       width: 200.0,
                       height: 200.0,
                     );

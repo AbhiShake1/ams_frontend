@@ -15,10 +15,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       phoneNo: json['phoneNo'] as int?,
       isStaff: json['isStaff'] as bool?,
       isSuperuser: json['isSuperuser'] as bool?,
+      imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) => <String, dynamic>{
       'userId': instance.userId,
       'grade': instance.grade,
       'parent': instance.parent,
